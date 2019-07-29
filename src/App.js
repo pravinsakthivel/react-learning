@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium ,{ StyleRoot }from 'radium';
 
 class App extends Component {
 
@@ -99,6 +99,7 @@ class App extends Component {
     }
 
     return (
+      <StyleRoot>
       <div className="App">
         {/* below code onClick={()=>this.switchNameHandler("Ram Pravin")} may be ineffective
         recommended to use is click={this.switchNameHandler.bind(this,"Sakthivel")}  */}
@@ -110,6 +111,7 @@ class App extends Component {
 
 
       </div>
+      </StyleRoot>
     );
   }
 
