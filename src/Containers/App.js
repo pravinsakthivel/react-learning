@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person';
-import Radium ,{ StyleRoot }from 'radium';
+import Persons from '../Components/Persons/Persons.js';
 
 class App extends Component {
 
@@ -61,34 +60,23 @@ class App extends Component {
       color: 'white',
       padding: '15px',
       border: '1px solid blue',
-      cursor: 'pointer',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'white'
-      }
+      cursor: 'pointer'
+      
 
     }
     let personsSection = null;
     if (this.state.showPersons) {
       personsSection = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person name={person.name}
-              age={person.age}
-              click={this.deletePersonshandler.bind(this, index)}
-              key={person.id}
-              change={(event) => this.nameChangeHandler(event, person.id)}
-            >
-
-            </Person>
-          })}
+          <Persons 
+            persons ={this.state.persons}
+            clicked = {this.deletePersonshandler}
+            changed={this.nameChangeHandler}
+          />
         </div>
       );
       style.backgroundColor = "red";
-      style[':hover'] = {
-        backgroundColor:'lightred',
-        color:'black'
-      }
+     
     }
     const classes = [];
     if (this.state.persons.length <= 2) {
@@ -99,7 +87,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+      
       <div className="App">
         {/* below code onClick={()=>this.switchNameHandler("Ram Pravin")} may be ineffective
         recommended to use is click={this.switchNameHandler.bind(this,"Sakthivel")}  */}
@@ -111,10 +99,10 @@ class App extends Component {
 
 
       </div>
-      </StyleRoot>
+     
     );
   }
 
 }
 
-export default Radium(App);
+export default App;
