@@ -2,8 +2,7 @@ import React from 'react';
 import './Person.css'
 
 const person =(props)=>{
-
-
+    console.log("In person method")
     return (
         <div className="Person" >
         <p onClick={props.click}>I am a person, name is {props.name},my age is {props.age} </p> 

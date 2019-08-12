@@ -4,6 +4,10 @@ import Persons from '../Components/Persons/Persons.js';
 
 class App extends Component {
 
+  constructor(props){
+    super(props);
+    console.log("In Constructor");
+  }
   state = {
     persons: [
       { id: "1", name: "ram", age: "26" },
@@ -11,6 +15,11 @@ class App extends Component {
     ],
     showPersons: false
   }
+  static getDerivedStateFromProps(state,props){
+    console.log("getDerived state from props: "+JSON.stringify(props));
+    return state;
+  }
+
   togglePersonsHandler = () => {
     console.log("In toggle handler");
     const doesShow = this.state.showPersons;
@@ -53,8 +62,12 @@ class App extends Component {
       persons: persons
     })
   }
+  componentDidMount(){
+    console.log("Inside component did Mount");
+  }
   render() {
     // Inline styles
+   
     const style = {
       backgroundColor: 'green',
       color: 'white',
